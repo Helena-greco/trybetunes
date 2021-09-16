@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../component/Loading';
 
-/** Ref: Consultei o repositório do Glauco sobre a função Logged */
 class Login extends React.Component {
   constructor() {
     super();
@@ -18,6 +17,7 @@ class Login extends React.Component {
     this.setState({ inputName: event.target.value });
   }
 
+  /** Ref: Consultei o repositório do Glauco sobre a função Logged */
   Logged = () => {
     const { inputName } = this.state;
     this.setState({ loading: true });
