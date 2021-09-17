@@ -1,42 +1,35 @@
-import React from 'react';
-// import Loading from './Loading';
-// import { getUser } from '../services/userAPI';
+import React, { Component } from 'react';
+import { getUser } from '../services/userAPI';
+import Loading from './Loading';
+import '../App.css';
 
-class Header extends React.Component {
-  // constructor() {
-  //   super();
+class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true,
+      username: '',
+    };
+  }
 
-  //   this.state = {
-  //     loading: true,
-  //     inputName: {},
-  //   };
-
-  //   this.loadingName = this.loadingName.bind(this);
-  // }
-
-  // componentDidMount = () => {
-  //   this.loadingName();
-  // }
-
-  // async loadingName() {
-  //   this.setState({ loading: true });
-  //   const username = await getUser();
-  //   console.log(username);
-  //   this.setState({
-  //     inputName: username.name,
-  //     loading: false,
-  //   });
-  // }
+  componentDidMount() {
+    const { username } = this.state;
+    if (username.length === 0) {
+      getUser()
+        .then((result) => this.setState({
+          username: result.name,
+          loading: false,
+        }));
+    }
+  }
 
   render() {
-    // const { inputName: { name }, loading } = this.state;
-    // console.log(this.state);
+    const { username, loading } = this.state;
+    if (loading) return <Loading />;
     return (
       <header data-testid="header-component">
-        <h1>TrybeTunes</h1>
-        {/* <span data-testid="header-user-name">
-          { loading ? (<Loading />) : name }
-        </span> */}
+        <h1 className="header-title">Trybetunes</h1>
+        <p data-testid="header-user-name">{ username }</p>
       </header>
     );
   }

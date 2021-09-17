@@ -7,14 +7,12 @@ import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
-import Header from './component/Header';
+import './App.css';
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Header />
-        <p>TrybeTunes in progress</p>
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route exact path="/search" component={ Search } />
