@@ -17,13 +17,17 @@ class Search extends React.Component {
     });
   }
 
+  handleSubmit = () => {
+    console.log(this.state);
+  }
+
   render() {
     const { search } = this.state;
     const minArtistName = 2;
     return (
       <div data-testid="page-search">
         <Header />
-        <form>
+        <form onSubmit={ this.handleSubmit }>
           <input
             type="text"
             data-testid="search-artist-input"
