@@ -40,8 +40,9 @@ class Login extends React.Component {
           : (
             <>
               <label htmlFor="login-name-input">
-                Nome Completo:
+                Nome:
                 <input
+                  placeholder="Usuário"
                   type="text"
                   data-testid="login-name-input"
                   onChange={ this.handleChange }
