@@ -40,7 +40,7 @@ class MusicCard extends React.Component {
           <code>audio</code>
         </audio>
         <label htmlFor={ trackId } data-testid={ `checkbox-music-${trackId}` }>
-          { loading ? <Loading /> : 'Favorita' }
+          Favorita
           <input
             type="checkbox"
             id={ trackId }
