@@ -14,7 +14,7 @@ class MusicCard extends React.Component {
     };
   }
 
-  // Ajuda do Riba sobre passar o parâmetro Data
+  // Desenvolvido em conjunto com o Riba Jr - 14b.
   favoriteSongs = async ({ target }) => {
     const { data } = this.props;
     this.setState({ loading: true });

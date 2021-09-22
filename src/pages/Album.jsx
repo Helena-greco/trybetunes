@@ -37,10 +37,10 @@ class Album extends React.Component {
       <div data-testid="page-album">
         <Header />
         <div>
-          <h3 data-testid="artist-name" key={ fetchMusic[0].key }>
+          <h3 data-testid="artist-name">
             { fetchMusic[0].artistName }
           </h3>
-          <h4 data-testid="album-name" key={ fetchMusic[0].key }>
+          <h4 data-testid="album-name">
             { fetchMusic[0].collectionName }
           </h4>
           <div>
@@ -50,9 +50,6 @@ class Album extends React.Component {
               nameArtist={ music.artistName }
               albumName={ music.collectionName }
               image={ music.artworkUrl100 }
-              // previewUrl={ music.previewUrl }
-              // trackName={ music.trackName }
-              // trackId={ music.trackId }
             />)) }
           </div>
         </div>
