@@ -14,6 +14,7 @@ class MusicCard extends React.Component {
     };
   }
 
+  // Ajuda do Riba sobre passar o parâmetro Data
   favoriteSongs = async ({ target }) => {
     const { data } = this.props;
     this.setState({ loading: true });
