@@ -45,7 +45,6 @@ class Search extends React.Component {
     if (fecthArtist.length === 0) {
       return (
         <div>
-          <p>{ `Resultado de álbuns de: ${lastArtist}` }</p>
           <h3>Nenhum álbum foi encontrado</h3>
         </div>
       );

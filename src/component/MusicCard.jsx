@@ -15,11 +15,10 @@ class MusicCard extends React.Component {
   }
 
   favoriteSongs = async ({ target }) => {
-    this.setState({
-      loading: true,
-    });
+    const { data } = this.props;
+    this.setState({ loading: true });
     if (target.checked) {
-      await addSong(target.trackId);
+      await addSong(data);
       this.setState({
         loading: false,
         checked: true,
@@ -28,19 +27,19 @@ class MusicCard extends React.Component {
   }
 
   render() {
-    const { trackName, previewUrl, trackId } = this.props;
+    const { data: { previewUrl, trackName, trackId } } = this.props;
+
     const { loading, checked } = this.state;
-    return (
+    const musics = (
       <div>
         <h4>{ trackName }</h4>
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
           O seu navegador não suporta o elemento
           <code>audio</code>
-          .
         </audio>
-        <label htmlFor="checkbox-input" data-testid={ `checkbox-music-${trackId}` }>
-          { loading ? <Loading /> : 'Favorita'}
+        <label htmlFor={ trackId } data-testid={ `checkbox-music-${trackId}` }>
+          { loading ? <Loading /> : 'Favorita' }
           <input
             type="checkbox"
             id={ trackId }
@@ -50,13 +49,22 @@ class MusicCard extends React.Component {
         </label>
       </div>
     );
+
+    // Ajuda no código da Luana no slack
+    return (
+      <div>
+        { !loading ? musics : <Loading /> }
+      </div>
+    );
   }
 }
 
 MusicCard.propTypes = {
-  trackName: PropTypes.string.isRequired,
-  previewUrl: PropTypes.string.isRequired,
-  trackId: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    trackName: PropTypes.string,
+    previewUrl: PropTypes.string,
+    trackId: PropTypes.number,
+  }).isRequired,
 };
 
 export default MusicCard;
